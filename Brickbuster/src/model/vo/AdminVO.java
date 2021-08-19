@@ -48,7 +48,7 @@ public class AdminVO {
 			{
 				System.out.println("Senha inválida");
 			}
-			else if ( senha.length() >= 4 && senha.length() <= 8 )
+			else if ( senha.length() >= 4 && senha.length() <= 16 )
 			{
 				this.senha = senha;
 			}
@@ -68,7 +68,7 @@ public class AdminVO {
 		}
 		else 
 		{
-			this.nome = nome;	
+			this.nome = nome;
 		}
 	}
 	
