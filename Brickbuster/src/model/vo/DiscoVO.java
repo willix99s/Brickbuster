@@ -65,7 +65,7 @@ public class DiscoVO {
 		return valorAluguel;
 	}
 	public void setValorAluguel(double valorAluguel) {
-		if (valorAluguel < 0) {System.out.println ("Valor não permitido ");}
+		if (valorAluguel <= 0) {System.out.println ("Valor não permitido ");}
 		else
 		this.valorAluguel = valorAluguel;
 	}
