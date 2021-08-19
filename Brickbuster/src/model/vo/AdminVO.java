@@ -8,11 +8,27 @@ public class AdminVO {
 	
 	//Get e Set de login
 	public String getLogin() {
+		
 		return login;
 		
 	}
 	public void setLogin(String login) {
-		this.login = login;
+		if ( login == null) 
+		{
+			System.out.println("Login não pode ser nulo");
+		}
+		else 
+		{
+			if( login.equals(" ") ) 
+			{
+			 System.out.println("Login não pode ser vazio");	
+			}
+			else 
+			{
+				this.login = login;	
+			}
+		}
+		
 		
 	}
 	
@@ -22,7 +38,21 @@ public class AdminVO {
 		
 	}
 	public void setSenha(String senha) {
-		this.senha = senha;
+		if ( senha == null) 
+		{
+			System.out.println("Senha inválida");
+		}
+		else 
+		{
+			if( senha.equals(" ") ) 
+			{
+				System.out.println("Senha inválida");
+			}
+			else if ( senha.length() >= 4 && senha.length() <= 16 )
+			{
+				this.senha = senha;
+			}
+		}
 		
 	}
 	
@@ -32,8 +62,14 @@ public class AdminVO {
 		
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
-		
+		if ( nome == null ) 
+		{
+			System.out.println("Nome não pode ser nulo");
+		}
+		else 
+		{
+			this.nome = nome;
+		}
 	}
 	
 }
