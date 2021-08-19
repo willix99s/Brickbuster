@@ -15,7 +15,21 @@ public class LivroVO {
 		return titulo;
 	}
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+		if(titulo == null)
+		{
+			System.out.println("Título não pode ser nulo");
+		}
+		else
+		{
+			if(titulo.equals(" "))
+			{
+				System.out.println("Título não pode ser vazio");
+			}
+			else
+			{
+				this.titulo = titulo;
+			}
+		}
 	}
 	
 	//Get e Set de autor
@@ -23,7 +37,21 @@ public class LivroVO {
 		return autor;
 	}
 	public void setAutor(String autor) {
-		this.autor = autor;
+		if(autor == null)
+		{
+			System.out.println("Autor não pode ser nulo");
+		}
+		else
+		{
+			if(autor.equals(" "))
+			{
+				System.out.println("Autor não pode ser vazio");
+			}
+			else
+			{
+				this.autor = autor;
+			}
+		}
 	}
 	
 	//Get e Set de genero
@@ -31,7 +59,21 @@ public class LivroVO {
 		return genero;
 	}
 	public void setGenero(String genero) {
-		this.genero = genero;
+		if(genero == null)
+		{
+			System.out.println("Gênero não pode ser nulo");
+		}
+		else
+		{
+			if(genero.equals(" "))
+			{
+				System.out.println("Gênero não pode ser vazio");
+			}
+			else
+			{
+				this.genero = genero;
+			}
+		}
 	}
 	
 	//Get e Set de ano
@@ -39,7 +81,14 @@ public class LivroVO {
 		return ano;
 	}
 	public void setAno(int ano) {
-		this.ano = ano;
+		if(ano <= 0)
+		{
+			System.out.println("Ano inválido");
+		}
+		else
+		{
+			this.ano = ano;
+		}
 	}
 	
 	//Get e Set de paginas
@@ -47,7 +96,14 @@ public class LivroVO {
 		return paginas;
 	}
 	public void setPaginas(int paginas) {
-		this.paginas = paginas;
+		if(paginas <= 0)
+		{
+			System.out.println("Quantidade não permitida");
+		}
+		else
+		{
+			this.paginas = paginas;	
+		}
 	}
 	
 	//Get e Set de exemplares
@@ -55,7 +111,14 @@ public class LivroVO {
 		return exemplares;
 	}
 	public void setExemplares(int exemplares) {
-		this.exemplares = exemplares;
+		if(exemplares <= 0)
+		{
+			System.out.println("Quantidade não permitida");
+		}
+		else
+		{
+			this.exemplares = exemplares;
+		}
 	}
 	
 	//Get e Set de aluguel
@@ -63,7 +126,14 @@ public class LivroVO {
 		return valorAluguel;
 	}
 	public void setValorAluguel(double valorAluguel) {
-		this.valorAluguel = valorAluguel;
+		if(valorAluguel <= 0)
+		{
+			System.out.println("Valor não permitido");
+		}
+		else
+		{
+			this.valorAluguel = valorAluguel;
+		}
 	}
 	
 	

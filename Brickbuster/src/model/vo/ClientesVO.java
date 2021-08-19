@@ -31,8 +31,8 @@ public class ClientesVO {
 		if ( endereco == null ) { System.out.println ("Endereço não pode ser nulo"); }
 		else 
 		{
-			if( nome.equals(" ") ) { System.out.println("Nome não pode ser vazio"); }
-			else { this.endereco = nome; }
+			if( endereco.equals(" ") ) { System.out.println("Endereço não pode ser vazio"); }
+			else { this.endereco = endereco; }
 		}
 		
 	}
