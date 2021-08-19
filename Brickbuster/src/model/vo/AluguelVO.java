@@ -22,8 +22,14 @@ public class AluguelVO {
 	public Calendar getDataInicio() {
 		return dataInicio;
 	}
+	
 	public void setDataInicio(Calendar dataInicio) {
-		this.dataInicio = dataInicio;
+		
+		Calendar dataI = Calendar.getInstance();
+		
+		if ( dataInicio == dataI ) { System.out.println ("Data atual correta!"); }
+		else { this.dataInicio = dataInicio; } 
+		
 	}
 	
 	//Get e Set de data final
@@ -39,7 +45,9 @@ public class AluguelVO {
 		return valorAluguel;
 	}
 	public void setValorAluguel(double valorAluguel) {
-		this.valorAluguel = valorAluguel;
+		
+		if ( valorAluguel >= 0 ) { this.valorAluguel = valorAluguel; }
+		
 	}
 	
 	//Get e Set de disco
