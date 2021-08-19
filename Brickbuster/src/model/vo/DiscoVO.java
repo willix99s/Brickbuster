@@ -13,7 +13,13 @@ public class DiscoVO {
 		return titulo;
 	}
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+		if (titulo==null) {System.out.println ("Digite um Título válido");}
+		else 
+		{
+			if (nome.equals(" ") ) {System.out.println ("Digite um Título válido");}
+			else {this.titulo = titulo;}
+		}
+		
 	}
 	
 	//Get e Set de nome
@@ -21,7 +27,13 @@ public class DiscoVO {
 		return nome;
 	}
 	public void setNome(String nome) {
-		this.nome = nome;
+		if (nome==null) {System.out.println ("Digite um nome válido");}
+		else
+		{
+			if (nome.equals(" ") ) {System.out.println ("Digite um nome Válido");}
+			else {this.nome = nome;}
+		}
+		
 	}
 	
 	//Get e Set de estilo
@@ -29,7 +41,13 @@ public class DiscoVO {
 		return estilo;
 	}
 	public void setEstilo(String estilo) {
-		this.estilo = estilo;
+		if (estilo==null) {System.out.println ("Digite um nome válido");}
+		else 
+		{
+			if (nome.equals(" ") ) {System.out.println ("Digite um nome Válido");}
+			else {this.estilo = estilo;}
+		}
+		
 	}
 	
 	//Get e Set de exemplares
@@ -37,6 +55,8 @@ public class DiscoVO {
 		return exemplares;
 	}
 	public void setExemplares(int exemplares) {
+		if (exemplares <= 0) {System.out.println ("Quantidade não permitida");}
+		else
 		this.exemplares = exemplares;
 	}
 	
@@ -45,6 +65,8 @@ public class DiscoVO {
 		return valorAluguel;
 	}
 	public void setValorAluguel(double valorAluguel) {
+		if (valorAluguel < 0) {System.out.println ("Valor não permitido ");}
+		else
 		this.valorAluguel = valorAluguel;
 	}
 	
