@@ -9,7 +9,7 @@ public class LivroVO {
 	private int paginas;
 	private int exemplares;
 	private double valorAluguel;
-	
+
 	//Get e Set de titulo
 	public String getTitulo() {
 		return titulo;

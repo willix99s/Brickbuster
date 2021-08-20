@@ -27,7 +27,7 @@ public class AluguelVO {
 		
 		Calendar dataI = Calendar.getInstance();
 		
-		if ( dataInicio == dataI ) { System.out.println ("Data atual correta!"); }
+		if ( dataInicio.equals(dataI) ) { System.out.println ("Data atual correta!"); }
 		else { this.dataInicio = dataInicio; } 
 		
 	}
@@ -37,7 +37,12 @@ public class AluguelVO {
 		return dataFinal;
 	}
 	public void setDataFinal(Calendar dataFinal) {
-		this.dataFinal = dataFinal;
+		
+		Calendar dataI = Calendar.getInstance();
+		dataI.add(Calendar.DAY_OF_MONTH, 3); 
+		
+		if ( dataFinal.equals(dataI) ) { this.dataFinal = dataFinal; }
+	
 	}
 	
 	//Get e Set de valor do aluguel
