@@ -2,11 +2,21 @@ package model.vo;
 
 public class DiscoVO {
 	//Atributos de DiscoVO
+	private int codDisco;
 	private String titulo;
 	private String banda;
 	private String estilo;
 	private int exemplares;
 	private double valorAluguel;
+	
+	//Get e Set de codDisco
+	public int getCodDisco() {
+		return codDisco;
+	}
+	public void setCodDisco(int codDisco) {
+		if(codDisco >= 0)this.codDisco = codDisco;
+	}
+	
 	
 	//Get e Set de titulo
 	public String getTitulo() {

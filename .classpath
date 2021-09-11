@@ -6,6 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
+	<classpathentry kind="lib" path="C:/Users/willi/Downloads/postgresql-42.2.23.jar"/>
+=======
 	<classpathentry kind="lib" path="C:/Users/Paulo/Downloads/postgresql-42.2.23.jar"/>
+>>>>>>> 75fb623a8566e69406471dd016fe59a4f9dc818b
 	<classpathentry kind="output" path="Brickbuster/bin"/>
 </classpath>
