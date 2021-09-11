@@ -3,6 +3,7 @@ import java.util.*;
 
 public class AluguelVO {
 	//Atributos de aluguel
+	private int codAluguel;
 	private ClientesVO nome;
 	private Calendar dataInicio;
 	private Calendar dataFinal;
@@ -10,7 +11,16 @@ public class AluguelVO {
 	private DiscoVO disco[];
 	private LivroVO livro[];
 	
+	//Get e Set de codAluguel
+	public int getCodAluguel() {
+		return codAluguel;
+	}
+	public void setCodAluguel(int codAluguel) {
+		if (codAluguel >= 0) this.codAluguel = codAluguel;
+	}
+	
 	//Get e Set de nome
+	
 	public ClientesVO getNome() {
 		return nome;
 	}

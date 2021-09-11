@@ -2,9 +2,19 @@ package model.vo;
 
 public class AdminVO {
 	//Atributos do admin
+	private int codAdmin;
 	private String login;
 	private String senha;
 	private String nome;
+	
+	//Get e Set codAdmin
+	public int getCodAdmin() {
+		return codAdmin;
+	}
+	public void setCodAdmin(int codAdmin) {
+		if (codAdmin >= 0)this.codAdmin = codAdmin;
+	}
+	
 	
 	//Get e Set de login
 	public String getLogin() {

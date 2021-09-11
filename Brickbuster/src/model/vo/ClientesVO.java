@@ -2,9 +2,21 @@ package model.vo;
 
 public class ClientesVO {
 	//Atributos de Clientes
+	private int codClientes;
 	private String nome;
 	private String endereco;
 	private String cpf;
+	
+	//Get e Set de codClientes
+	public int getCodClientes() {
+		return codClientes;
+	}
+
+	public void setCodClientes(int codClientes) {
+		if(codClientes >= 0) this.codClientes = codClientes;
+	}
+
+	
 	
 	//Get e Set de nome
 	public String getNome() {
@@ -44,7 +56,7 @@ public class ClientesVO {
 	
 	public void setCpf(String cpf) {
 		
-		if ( cpf.length() == 11 ) { this.cpf = cpf; } 
+		if ( cpf.length() >= 11 ) { this.cpf = cpf; } 
 		else { System.out.println ("CPF inválido!"); }
 	}
 	

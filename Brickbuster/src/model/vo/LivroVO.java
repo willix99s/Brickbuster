@@ -2,6 +2,7 @@ package model.vo;
 
 public class LivroVO {
 	//Atributos do Livro
+	private int codLivro;
 	private String titulo;
 	private String autor;
 	private String genero;
@@ -10,6 +11,16 @@ public class LivroVO {
 	private int exemplares;
 	private double valorAluguel;
 
+	
+	//Get e Set de codLivro
+	public int getCodLivro() {
+		return codLivro;
+	}
+	public void setCodLivro(int codLivro) {
+		if (codLivro >= 0)
+		this.codLivro = codLivro;
+	}
+	
 	//Get e Set de titulo
 	public String getTitulo() {
 		return titulo;
