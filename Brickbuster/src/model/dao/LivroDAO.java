@@ -74,6 +74,70 @@ public class LivroDAO extends BaseDAO {
 		return livros;
 	}
 	
+	public ResultSet pesquisarPorTitulo(LivroVO vo) {
+		conn = getConnection();
+		String sql = "select * from Livro where titulo = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getTitulo());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorAutor(LivroVO vo) {
+		conn = getConnection();
+		String sql = "select * from Livro where autor = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getAutor());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorGenero(LivroVO vo) {
+		conn = getConnection();
+		String sql = "select * from Livro where genero = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getGenero());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorAno(LivroVO vo) {
+		conn = getConnection();
+		String sql = "select * from Livro where ano = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setInt(1, vo.getAno());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+	
 	public void editar(LivroVO vo) {
 		conn = getConnection();
 		String sql = "update livro set titulo = ? where codLivro = ?";

@@ -70,6 +70,55 @@ public class DiscoDAO extends BaseDAO {
 		}
 		return discos;
 }
+	
+	public ResultSet pesquisarPorTitulo(DiscoVO vo) {
+		conn = getConnection();
+		String sql = "select * from Disco where titulo = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;	
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getTitulo());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorBanda(DiscoVO vo) {
+		conn = getConnection();
+		String sql = "select * from Disco where banda = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getBanda());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorEstilo(DiscoVO vo) {
+		conn = getConnection();
+		String sql = "select * from Disco where estilo = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;	
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getEstilo());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+	
 	public void editar(DiscoVO vo) {
 		conn = getConnection();
 		String sql = "update from disco set banda = ? where codDisco = ?";

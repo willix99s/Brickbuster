@@ -68,6 +68,38 @@ public class ClientesDAO extends BaseDAO {
 		return cliente;
 	}
 	
+	public ResultSet pesquisarPorNome(ClientesVO vo) {
+		conn = getConnection();
+		String sql = "select * from Clientes where nome = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;	
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getNome());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+
+		public ResultSet pesquisarPorCpf(ClientesVO vo) {
+		conn = getConnection();
+		String sql = "select * from Clientes where cpf = ?";
+				PreparedStatement ptst;
+				ResultSet rs = null;
+		 		try {
+					ptst = conn.prepareStatement(sql);
+					ptst.setString(1, vo.getCpf());
+					rs = ptst.executeQuery();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return rs;
+			}
+	
 	public void editar(ClientesVO vo) 
 	{
 		conn = getConnection();
