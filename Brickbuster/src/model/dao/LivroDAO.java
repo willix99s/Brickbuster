@@ -138,19 +138,25 @@ public class LivroDAO extends BaseDAO {
 				return rs;
 			}
 	
-	public void editar(LivroVO vo) {
-		conn = getConnection();
-		String sql = "update livro set titulo = ? where codLivro = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conn.prepareStatement(sql);
-			ptst.setString(1, vo.getTitulo());
-			ptst.setInt(2, vo.getCodLivro());
-			ptst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		public void editar(LivroVO vo) {
+			conn = getConnection();
+			String sql = "update Livro set titulo = ?, autor = ?, genero = ?, ano = ?, paginas = ?, exemplares = ?, valorAluguel = ? where codLivro = ?";
+			PreparedStatement ptst;
+			try {
+				ptst = conn.prepareStatement(sql);
+				ptst.setString(1, vo.getTitulo());
+				ptst.setString(2, vo.getAutor());
+				ptst.setString(3, vo.getGenero());
+				ptst.setInt(4, vo.getAno());
+				ptst.setInt(5, vo.getPaginas());			
+				ptst.setInt(6, vo.getExemplares());
+				ptst.setDouble(7, vo.getValorAluguel());
+				ptst.setInt(8, vo.getCodLivro());
+				ptst.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-	}
 	
 }

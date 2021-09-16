@@ -119,18 +119,22 @@ public class DiscoDAO extends BaseDAO {
 				return rs;
 			}
 	
-	public void editar(DiscoVO vo) {
-		conn = getConnection();
-		String sql = "update from disco set banda = ? where codDisco = ?";
-		PreparedStatement ptst;
-		try {
-			 ptst = conn.prepareStatement(sql);
-			 ptst.setString(1, vo.getTitulo());
-			 ptst.setInt(2, vo.getCodDisco());
-			 ptst.executeUpdate();
-		} catch (SQLException e) {
-			//TODO Auto-generated catch block
-			e.printStackTrace();
+		public void editar(DiscoVO vo) {
+			conn = getConnection();
+			String sql = "update Disco set titulo = ?, banda = ?, estilo = ?, exemplares = ?, valorAluguel = ? where codDisco = ?";
+			PreparedStatement ptst;
+			try {
+				ptst = conn.prepareStatement(sql);
+				ptst.setString(1, vo.getTitulo());
+				ptst.setString(2, vo.getBanda());
+				ptst.setString(3, vo.getEstilo());
+				ptst.setInt(4, vo.getExemplares());
+				ptst.setDouble(5, vo.getValorAluguel());			
+				ptst.setInt(6, vo.getCodDisco());
+				ptst.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-	}
 }

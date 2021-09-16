@@ -100,21 +100,22 @@ public class ClientesDAO extends BaseDAO {
 				return rs;
 			}
 	
-	public void editar(ClientesVO vo) 
-	{
-		conn = getConnection();
-		String sql = "update from clientes set nome = ? where codClientes = ?";
-		PreparedStatement ptst;
-		try {
-			ptst = conn.prepareStatement(sql);
-			ptst.setString(1, vo.getNome());
-			ptst.setInt(2, vo.getCodClientes());
-			ptst.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		public void editar(ClientesVO vo) {
+			conn = getConnection();
+			String sql = "update Clientes set nome = ?, endereco = ?, cpf = ? where codClientes = ?";
+			PreparedStatement ptst;
+			try {
+				ptst = conn.prepareStatement(sql);
+				ptst.setString(1, vo.getNome());
+				ptst.setString(2, vo.getEndereco());
+				ptst.setString(3, vo.getCpf());
+				ptst.setInt(4, vo.getCodClientes());
+				ptst.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-	
-	}
+
 	
 }

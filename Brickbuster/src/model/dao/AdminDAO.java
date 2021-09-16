@@ -68,17 +68,20 @@ public class AdminDAO extends BaseDAO {
 	
 	public void editar(AdminVO vo) {
 		conn = getConnection();
-		String sql = "update admin set nome = ? where codAdmin = ?";
+		String sql = "update Admin set login = ?, senha = ?, nome = ? where codAdmin = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
-			ptst.setInt(1, vo.getCodAdmin());
-			ptst.setString(2, vo.getNome());
+			ptst.setString(1, vo.getLogin());
+			ptst.setString(2, vo.getSenha());
+			ptst.setString(3, vo.getNome());
+			ptst.setInt(4, vo.getCodAdmin());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
 	
 }
