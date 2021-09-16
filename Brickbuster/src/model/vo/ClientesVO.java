@@ -13,7 +13,10 @@ public class ClientesVO {
 	}
 
 	public void setCodClientes(int codClientes) {
-		if(codClientes >= 0) this.codClientes = codClientes;
+		if(codClientes >= 0) 
+		{
+			this.codClientes = codClientes;
+		}
 	}
 
 	

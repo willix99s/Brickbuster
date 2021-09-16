@@ -13,7 +13,7 @@ public class LivroDAO extends BaseDAO {
 	
 	public void inserir(LivroVO vo) {
 		conn = getConnection();
-		String sql = "insert into Livro (codLivro, titulo, autor, genero, ano, paginas, exemplares, valorAluguel) values (?,?,?,?,?,?,?,?)";
+		String sql = "insert into livro (codLivro, titulo, autor, genero, ano, paginas, exemplares, valorAluguel) values (?,?,?,?,?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -34,7 +34,7 @@ public class LivroDAO extends BaseDAO {
 	
 	public void remover(LivroVO vo) {
 		conn = getConnection();
-		String sql = "delete from Livro where codLivro = ?";
+		String sql = "delete from livro where codLivro = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class LivroDAO extends BaseDAO {
 	
 	public List<LivroVO> listar(){
 		conn = getConnection();
-		String sql = "select * from Livro";
+		String sql = "select * from livro";
 		Statement st;
 		ResultSet rs;
 		List<LivroVO> livros = new ArrayList<LivroVO>();
@@ -76,7 +76,7 @@ public class LivroDAO extends BaseDAO {
 	
 	public void editar(LivroVO vo) {
 		conn = getConnection();
-		String sql = "update Livro set titulo = ? where codLivro = ?";
+		String sql = "update livro set titulo = ? where codLivro = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);

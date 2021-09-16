@@ -4,12 +4,12 @@ import java.util.*;
 public class AluguelVO {
 	//Atributos de aluguel
 	private int codAluguel;
-	private ClientesVO nome;
+	private ClientesVO codNomeCliente;
 	private Calendar dataInicio;
 	private Calendar dataFinal;
 	private double valorAluguel;
-	private DiscoVO disco[];
-	private LivroVO livro[];
+	private AluguelDiscoVO disco[];
+	private AluguelLivroVO livro[];
 	
 	//Get e Set de codAluguel
 	public int getCodAluguel() {
@@ -19,13 +19,13 @@ public class AluguelVO {
 		if (codAluguel >= 0) this.codAluguel = codAluguel;
 	}
 	
-	//Get e Set de nome
+	//Get e Set de codCodNomeCliente
 	
-	public ClientesVO getNome() {
-		return nome;
+	public ClientesVO getCodNomeCliente() {
+		return codNomeCliente;
 	}
-	public void setNome(ClientesVO nome) {
-		this.nome = nome;
+	public void setCodNomeCliente(ClientesVO codNomeCliente) {
+		this.codNomeCliente = codNomeCliente;
 	}
 	
 	//Get e Set de data inicial
@@ -66,18 +66,18 @@ public class AluguelVO {
 	}
 	
 	//Get e Set de disco
-	public DiscoVO[] getDisco() {
+	public AluguelDiscoVO[] getDisco() {
 		return disco;
 	}
-	public void setDisco(DiscoVO[] disco) {
+	public void setDisco(AluguelDiscoVO[] disco) {
 		this.disco = disco;
 	}
 	
 	//Get e Set de livro
-	public LivroVO[] getLivro() {
+	public AluguelLivroVO[] getLivro() {
 		return livro;
 	}
-	public void setLivro(LivroVO[] livro) {
+	public void setLivro(AluguelLivroVO[] livro) {
 		this.livro = livro;
 	}
 	

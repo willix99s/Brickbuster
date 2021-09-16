@@ -13,7 +13,7 @@ public class DiscoDAO extends BaseDAO {
 	
 	public void inserir(DiscoVO vo) {
 		conn = getConnection();
-		String sql = "insert into Disco (codDisco, titulo, banda, estilo, exemplares, valorAluguel) values (?,?,?,?,?,?)";
+		String sql = "insert into disco (codDisco, titulo, banda, estilo, exemplares, valorAluguel) values (?,?,?,?,?,?)";
 		PreparedStatement ptst;
 	    try {
 				ptst = conn.prepareStatement(sql);
@@ -32,7 +32,7 @@ public class DiscoDAO extends BaseDAO {
 	}
 	public void remover(DiscoVO vo) {
 		conn = getConnection();
-		String sql = "delete from Disco where codDisco = ?";
+		String sql = "delete from disco where codDisco = ?";
 		PreparedStatement ptst;
 	    try {
 				ptst = conn.prepareStatement(sql);
@@ -45,7 +45,7 @@ public class DiscoDAO extends BaseDAO {
   }
 	public List<DiscoVO> listar() {
 		conn = getConnection();
-		String sql = "Select * from Disco";
+		String sql = "Select * from disco";
 		Statement st;
 		ResultSet rs;
 		List<DiscoVO> discos = new ArrayList<DiscoVO>();
@@ -55,7 +55,7 @@ public class DiscoDAO extends BaseDAO {
 			 rs = st.executeQuery(sql);
 			 while(rs.next()) {
 				 DiscoVO vo = new DiscoVO();
-				 vo.setCodDisco(rs.getInt("codLivro"));
+				 vo.setCodDisco(rs.getInt("codDisco"));
 				 vo.setTitulo(rs.getString("titulo"));
 				 vo.setBanda(rs.getString("banda"));
 				 vo.setEstilo(rs.getString("estilo"));
@@ -72,7 +72,7 @@ public class DiscoDAO extends BaseDAO {
 }
 	public void editar(DiscoVO vo) {
 		conn = getConnection();
-		String sql = "update from Disco set banda = ? where codDisco = ?";
+		String sql = "update from disco set banda = ? where codDisco = ?";
 		PreparedStatement ptst;
 		try {
 			 ptst = conn.prepareStatement(sql);

@@ -13,7 +13,7 @@ public class AdminDAO extends BaseDAO {
 	
 	public void inserir(AdminVO vo) {
 		conn = getConnection();
-		String sql = "insert into Admin (codAdmin, login, senha, nome) values (?,?,?,?)";
+		String sql = "insert into admin (codAdmin, login, senha, nome) values (?,?,?,?)";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -30,7 +30,7 @@ public class AdminDAO extends BaseDAO {
 	
 	public void remover(AdminVO vo) {
 		conn = getConnection();
-		String sql = "delete from Admin where codAdmin = ?";
+		String sql = "delete from admin where codAdmin = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
@@ -44,7 +44,7 @@ public class AdminDAO extends BaseDAO {
 	
 	public List<AdminVO> listar(){
 		conn = getConnection();
-		String sql = "select * from Admin";
+		String sql = "select * from admin";
 		Statement st;
 		ResultSet rs;
 		List<AdminVO> admins = new ArrayList<AdminVO>();
@@ -68,7 +68,7 @@ public class AdminDAO extends BaseDAO {
 	
 	public void editar(AdminVO vo) {
 		conn = getConnection();
-		String sql = "update Admin set nome = ? where codAdmin = ?";
+		String sql = "update admin set nome = ? where codAdmin = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = conn.prepareStatement(sql);
