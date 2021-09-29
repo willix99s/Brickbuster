@@ -29,7 +29,7 @@ public class AdminVO {
 		}
 		else 
 		{
-			if( login.equals(" ") ) 
+			if( login.equals("") ) 
 			{
 			 System.out.println("Login não pode ser vazio");	
 			}
@@ -54,7 +54,7 @@ public class AdminVO {
 		}
 		else 
 		{
-			if( senha.equals(" ") ) 
+			if( senha.equals("") ) 
 			{
 				System.out.println("Senha inválida");
 			}

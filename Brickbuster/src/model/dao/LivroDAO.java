@@ -9,35 +9,45 @@ import java.util.List;
 
 import model.vo.LivroVO;
 
-public class LivroDAO extends BaseDAO {
+public class LivroDAO extends ProdutoDAO<LivroVO> {
 	
+	@Override
 	public void inserir(LivroVO vo) {
-		conn = getConnection();
-		String sql = "insert into livro (codLivro, titulo, autor, genero, ano, paginas, exemplares, valorAluguel) values (?,?,?,?,?,?,?,?)";
-		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
-			ptst.setInt(1, vo.getCodLivro());
-			ptst.setString(2, vo.getTitulo());
-			ptst.setString(3, vo.getAutor());
-			ptst.setString(4, vo.getGenero());
-			ptst.setInt(5, vo.getAno());
-			ptst.setInt(6, vo.getPaginas());
-			ptst.setInt(7, vo.getExemplares());
-			ptst.setDouble(8, vo.getValorAluguel());
-			ptst.execute();
+			super.inserir(vo);
+			String sql = "insert into livro (autor, genero, ano, paginas, codProduto) values (?,?,?,?,?)";
+			PreparedStatement ptst;
+			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ptst.setString(1, vo.getAutor());
+			ptst.setString(2, vo.getGenero());
+			ptst.setInt(3, vo.getAno());
+			ptst.setInt(4, vo.getPaginas());
+			ptst.setInt(5, vo.getCodProduto());
+			
+			int affectedRows = ptst.executeUpdate();
+
+			if (affectedRows == 0) {
+				throw new SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+			}
+			ResultSet generatedKeys = ptst.getGeneratedKeys();
+			if (generatedKeys.next()) {
+				vo.setCodLivro(generatedKeys.getInt(1));
+			} else {
+				throw new SQLException("A inserção falhou. Nenhuma id foi retornado.");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	@Override
 	public void remover(LivroVO vo) {
-		conn = getConnection();
 		String sql = "delete from livro where codLivro = ?";
 		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo.getCodLivro());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
@@ -46,20 +56,31 @@ public class LivroDAO extends BaseDAO {
 		}
 	}
 	
-	public List<LivroVO> listar(){
-		conn = getConnection();
+	@Override
+	public ResultSet buscar() {
 		String sql = "select * from livro";
 		Statement st;
-		ResultSet rs;
+		ResultSet rs = null;
+
+		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public List<LivroVO> listar(){
 		List<LivroVO> livros = new ArrayList<LivroVO>();
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			ResultSet rs = buscar();
 			while(rs.next()) {
 				LivroVO vo = new LivroVO();
 				vo.setAno(rs.getInt("ano"));
 				vo.setAutor(rs.getString("autor"));
-				vo.setCodLivro(rs.getInt("codLivro"));
+				vo.setCodProduto(rs.getInt("codLivro"));
 				vo.setExemplares(rs.getInt("exemplares"));
 				vo.setGenero(rs.getString("genero"));
 				vo.setPaginas(rs.getInt("paginas"));
@@ -75,12 +96,11 @@ public class LivroDAO extends BaseDAO {
 	}
 	
 	public ResultSet pesquisarPorTitulo(LivroVO vo) {
-		conn = getConnection();
 		String sql = "select * from Livro where titulo = ?";
 				PreparedStatement ptst;
 				ResultSet rs = null;
 		 		try {
-					ptst = conn.prepareStatement(sql);
+					ptst = getConnection().prepareStatement(sql);
 					ptst.setString(1, vo.getTitulo());
 					rs = ptst.executeQuery();
 				} catch (SQLException e) {
@@ -91,12 +111,11 @@ public class LivroDAO extends BaseDAO {
 			}
 
 		public ResultSet pesquisarPorAutor(LivroVO vo) {
-		conn = getConnection();
 		String sql = "select * from Livro where autor = ?";
 				PreparedStatement ptst;
 				ResultSet rs = null;
 		 		try {
-					ptst = conn.prepareStatement(sql);
+					ptst = getConnection().prepareStatement(sql);
 					ptst.setString(1, vo.getAutor());
 					rs = ptst.executeQuery();
 				} catch (SQLException e) {
@@ -107,12 +126,11 @@ public class LivroDAO extends BaseDAO {
 			}
 
 		public ResultSet pesquisarPorGenero(LivroVO vo) {
-		conn = getConnection();
 		String sql = "select * from Livro where genero = ?";
 				PreparedStatement ptst;
 				ResultSet rs = null;
 		 		try {
-					ptst = conn.prepareStatement(sql);
+					ptst = getConnection().prepareStatement(sql);
 					ptst.setString(1, vo.getGenero());
 					rs = ptst.executeQuery();
 				} catch (SQLException e) {
@@ -123,12 +141,11 @@ public class LivroDAO extends BaseDAO {
 			}
 
 		public ResultSet pesquisarPorAno(LivroVO vo) {
-		conn = getConnection();
 		String sql = "select * from Livro where ano = ?";
 				PreparedStatement ptst;
 				ResultSet rs = null;
 		 		try {
-					ptst = conn.prepareStatement(sql);
+					ptst = getConnection().prepareStatement(sql);
 					ptst.setInt(1, vo.getAno());
 					rs = ptst.executeQuery();
 				} catch (SQLException e) {
@@ -139,11 +156,10 @@ public class LivroDAO extends BaseDAO {
 			}
 	
 		public void editar(LivroVO vo) {
-			conn = getConnection();
 			String sql = "update Livro set titulo = ?, autor = ?, genero = ?, ano = ?, paginas = ?, exemplares = ?, valorAluguel = ? where codLivro = ?";
 			PreparedStatement ptst;
 			try {
-				ptst = conn.prepareStatement(sql);
+				ptst = getConnection().prepareStatement(sql);
 				ptst.setString(1, vo.getTitulo());
 				ptst.setString(2, vo.getAutor());
 				ptst.setString(3, vo.getGenero());
@@ -151,7 +167,7 @@ public class LivroDAO extends BaseDAO {
 				ptst.setInt(5, vo.getPaginas());			
 				ptst.setInt(6, vo.getExemplares());
 				ptst.setDouble(7, vo.getValorAluguel());
-				ptst.setInt(8, vo.getCodLivro());
+				ptst.setInt(8, vo.getCodProduto());
 				ptst.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
