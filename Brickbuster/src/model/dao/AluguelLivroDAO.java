@@ -3,22 +3,22 @@ package model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.vo.AluguelLivroVO;
 import model.vo.AluguelVO;
 
-public class AluguelLivroDAO extends BaseDAO {
+public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 	
 	public void inserir(AluguelLivroVO vo[]) {
 		
-		conn = getConnection();
-		String sql = "insert into aluguelLivro (codAluguelLivro, codAluguel, codLivro) values (?,?,?)";
-		PreparedStatement ptst;
 		try {
-			
+			String sql = "insert into aluguelLivro (codAluguelLivro, codAluguel, codLivro) values (?,?,?)";
+			PreparedStatement ptst;
+			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			for (int i = 0; i < vo.length; i++) {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo[i].getCodAluguelLivro());
 			ptst.setInt(2, vo[i].getCodAluguel().getCodAluguel());
 			ptst.setInt(3, vo[i].getCodLivro().getCodLivro());
@@ -32,12 +32,12 @@ public class AluguelLivroDAO extends BaseDAO {
 	}
 	
 	public void remover(AluguelLivroVO vo[]) {
-		conn = getConnection();
+		
 		String sql = "delete from aluguelLivro where codAluguelLivro = ?";
 		PreparedStatement ptst;
 		try {
 			for (int i = 0; i < vo.length; i++) {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo[i].getCodAluguelLivro());
 			ptst.executeUpdate();
 			}
@@ -50,13 +50,13 @@ public class AluguelLivroDAO extends BaseDAO {
 
 	
 	public List<AluguelLivroVO> listar(AluguelVO voAluguel){
-		conn = getConnection();
+		
 		String sql = "select * from aluguelLivro where codAluguel = ?";
 		PreparedStatement ptst;
 		ResultSet rs;
 		List<AluguelLivroVO> alugueisL = new ArrayList<AluguelLivroVO>();
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, voAluguel.getCodAluguel());
 			
 			rs = ptst.executeQuery(sql);
@@ -77,13 +77,13 @@ public class AluguelLivroDAO extends BaseDAO {
 	}
 	
 	public void editar(AluguelLivroVO vo[]) {
-		conn = getConnection();
+		
 		String sql = "update aluguelLivro set codLivro = ? where codAluguelLivro = ?";
 		PreparedStatement ptst;
 		try {
 			
 			for (int i = 0; i < vo.length; i++) {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo[i].getCodAluguel().getCodAluguel());
 			ptst.setInt(2, vo[i].getCodAluguelLivro());
 			ptst.executeUpdate();
@@ -93,6 +93,33 @@ public class AluguelLivroDAO extends BaseDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	
+
+
+	@Override
+	public ResultSet buscar() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void inserir(AluguelLivroVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void editar(AluguelLivroVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover(AluguelLivroVO vo) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
