@@ -12,28 +12,39 @@ import model.vo.AluguelDiscoVO;
 import model.vo.AluguelLivroVO;
 import model.vo.AluguelVO;
 
-public class AluguelDAO extends BaseDAO {
+public class AluguelDAO extends BaseDAO<AluguelVO> {
 	
-
 	public void inserir(AluguelVO vo) {
-		
-		conn = getConnection();
-		String sql = "insert into aluguel (codAluguel, codNomeCliente, dataInicio, dataFinal, valorAluguel) values (?,?,?,?,?)";
-		PreparedStatement ptst;
+
 		try {
-			ptst = conn.prepareStatement(sql);
+			String sql = "insert into aluguel (codAluguel, codNomeCliente, dataInicio, dataFinal, valorAluguel) values (?,?,?,?,?)";
+			PreparedStatement ptst;
+			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setInt(1, vo.getCodAluguel());
 			ptst.setInt(2, vo.getCodNomeCliente().getCodClientes());
 			ptst.setDate(3, new java.sql.Date(vo.getDataInicio().getTime().getTime()));
 			ptst.setDate(4, new java.sql.Date(vo.getDataFinal().getTime().getTime()));
 			ptst.setDouble(5, vo.getValorAluguel());
-			ptst.execute();
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new  SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+			}
+			ResultSet generatedKeys = ptst.getGeneratedKeys();
+			if(generatedKeys.next()) {
+				vo.setCodAluguel(generatedKeys.getInt(1));
+			}
+			else {
+				throw new SQLException("A inserção falhou. Nenhum id foi retornado");
+			}
 			
 			AluguelDiscoDAO dao = new AluguelDiscoDAO();
 			dao.inserir(vo.getDisco());
 			
 			AluguelLivroDAO dao2 = new AluguelLivroDAO();
 			dao2.inserir(vo.getLivro());
+			
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -43,11 +54,10 @@ public class AluguelDAO extends BaseDAO {
 	
 	
 	public void remover(AluguelVO vo) {
-		conn = getConnection();
 		String sql = "delete from aluguel where codAluguel = ?";
 		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo.getCodAluguel());
 			ptst.executeUpdate();
 			
@@ -63,19 +73,31 @@ public class AluguelDAO extends BaseDAO {
 		}
 	}
 	
-	
-	public List<AluguelVO> listar(){
-		conn = getConnection();
+	@Override
+	public ResultSet buscar() 
+	{
 		String sql = "select * from aluguel";
 		Statement st;
-		ResultSet rs;
+		ResultSet rs = null;
+
+		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public List<AluguelVO> listar(){
+		
 		List<AluguelVO> alugueis = new ArrayList<AluguelVO>();
 		List<AluguelLivroVO> livros = new ArrayList<AluguelLivroVO>();
 		List<AluguelDiscoVO> discos = new ArrayList<AluguelDiscoVO>();
 		
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			ResultSet rs = buscar();
 			while(rs.next()) {
 				Calendar calendar = Calendar.getInstance();
 				Calendar calendar2 = Calendar.getInstance();
@@ -108,11 +130,10 @@ public class AluguelDAO extends BaseDAO {
 	
 	
 	public void editar(AluguelVO vo) {
-		conn = getConnection();
 		String sql = "update aluguel set  codNomeCliente = ? where codAluguel = ?";
 		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo.getCodNomeCliente().getCodClientes());
 			ptst.setInt(2, vo.getCodAluguel());
 			ptst.executeUpdate();

@@ -9,19 +9,31 @@ import java.util.List;
 
 import model.vo.AdminVO;
 
-public class AdminDAO extends BaseDAO {
+public class AdminDAO extends BaseDAO<AdminVO> {
 	
-	public void inserir(AdminVO vo) {
-		conn = getConnection();
-		String sql = "insert into admin (codAdmin, login, senha, nome) values (?,?,?,?)";
-		PreparedStatement ptst;
+	public void inserir(AdminVO vo) {	
 		try {
-			ptst = conn.prepareStatement(sql);
+			String sql = "insert into admin (codAdmin, login, senha, nome) values (?,?,?,?)";
+			PreparedStatement ptst;
+			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setInt(1, vo.getCodAdmin());
 			ptst.setString(2, vo.getLogin());
 			ptst.setString(3, vo.getSenha());
 			ptst.setString(4, vo.getNome());
-			ptst.execute();
+			
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new  SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+			}
+			ResultSet generatedKeys = ptst.getGeneratedKeys();
+			if(generatedKeys.next()) {
+				vo.setCodAdmin(generatedKeys.getInt(1));
+			}
+			else {
+				throw new SQLException("A inserção falhou. Nenhum id foi retornado");
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -29,11 +41,10 @@ public class AdminDAO extends BaseDAO {
 	}
 	
 	public void remover(AdminVO vo) {
-		conn = getConnection();
 		String sql = "delete from admin where codAdmin = ?";
 		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setInt(1, vo.getCodAdmin());
 			ptst.executeUpdate();
 		} catch (SQLException e) {
@@ -42,15 +53,28 @@ public class AdminDAO extends BaseDAO {
 		}
 	}
 	
-	public List<AdminVO> listar(){
-		conn = getConnection();
+	@Override
+	public ResultSet buscar() 
+	{
 		String sql = "select * from admin";
 		Statement st;
-		ResultSet rs;
+		ResultSet rs = null;
+
+		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public List<AdminVO> listar()
+	{
 		List<AdminVO> admins = new ArrayList<AdminVO>();
 		try {
-			st = conn.createStatement();
-			rs = st.executeQuery(sql);
+			ResultSet rs = buscar();
 			while(rs.next()) {
 				AdminVO vo = new AdminVO();
 				vo.setCodAdmin(rs.getInt("codAdmin"));
@@ -67,11 +91,10 @@ public class AdminDAO extends BaseDAO {
 	}
 	
 	public void editar(AdminVO vo) {
-		conn = getConnection();
 		String sql = "update Admin set login = ?, senha = ?, nome = ? where codAdmin = ?";
 		PreparedStatement ptst;
 		try {
-			ptst = conn.prepareStatement(sql);
+			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getLogin());
 			ptst.setString(2, vo.getSenha());
 			ptst.setString(3, vo.getNome());
