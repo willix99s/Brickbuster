@@ -23,8 +23,21 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 			ptst.setInt(2, vo[i].getCodAluguel().getCodAluguel());
 			ptst.setInt(3, vo[i].getCodLivro().getCodLivro());
 			ptst.execute();
-			}
 			
+			int affectedRows = ptst.executeUpdate();
+			
+			if(affectedRows == 0) {
+				throw new  SQLException("A inserção falhou. Nenhuma linha foi alterada.");
+			}
+			ResultSet generatedKeys = ptst.getGeneratedKeys();
+			if(generatedKeys.next()) {
+				vo[i].setCodAluguelLivro(generatedKeys.getInt(1));
+			}
+			else {
+				throw new SQLException("A inserção falhou. Nenhum id foi retornado");
+			}		
+		}
+					
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
