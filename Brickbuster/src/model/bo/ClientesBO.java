@@ -14,7 +14,7 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
 			if (rs.next()) {
-				throws new Exception("Erro em inserir, pois esse cpf já existe.");
+				throws new Exception("Erro em inserir,  pois esse cpf já existe.");
 			}
 			else {
 				dao.pesquisarPorCpf(vo);
