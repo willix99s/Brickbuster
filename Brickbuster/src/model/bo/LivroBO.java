@@ -2,8 +2,8 @@ package model.bo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-
 import model.dao.LivroDAO;
 import model.vo.LivroVO;
 
@@ -52,34 +52,26 @@ public class LivroBO implements BaseinterBO<LivroVO> {
 		}
 	}
 
-	@Override
-	public ResultSet buscar() throws Exception {
+	
+	public List<LivroVO> listar(){
+		List<LivroVO> livros = new ArrayList<LivroVO>();
 		try {
 			ResultSet rs = dao.buscar();
-			if (rs.next()) {
-				dao.buscar();
-			} else {
-				throw new Exception("Impossível buscar, pois não existem livros cadastrados.");
+			while(rs.next()) {
+				LivroVO vo = new LivroVO();
+				vo.setAno(rs.getInt("ano"));
+				vo.setAutor(rs.getString("autor"));
+				vo.setCodProduto(rs.getInt("codLivro"));
+				vo.setExemplares(rs.getInt("exemplares"));
+				vo.setGenero(rs.getString("genero"));
+				vo.setPaginas(rs.getInt("paginas"));
+				vo.setTitulo(rs.getString("titulo"));
+				vo.setValorAluguel(rs.getDouble("valorAluguel"));
+				livros.add(vo);
 			}
 		} catch (SQLException e) {
-			throw new Exception(e.getMessage());
-		}
-		return null;
-	}
-	
-	public List<LivroVO> listar(LivroVO vo) throws Exception {
-		List<LivroVO> livros = null;
-		try {
-			ResultSet rs = dao.buscar();
-			if(rs.next()) {
-				livros = dao.listar();
-			}
-			else {
-				throw new Exception("Impossível listar, pois não existem livros cadastrados.");
-			}
-		}
-		catch(SQLException e) {
-			throw new Exception(e.getMessage());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return livros;
 	}

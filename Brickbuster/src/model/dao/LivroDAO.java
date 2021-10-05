@@ -4,8 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import model.vo.LivroVO;
 
@@ -72,28 +71,7 @@ public class LivroDAO extends ProdutoDAO<LivroVO> {
 		return rs;
 	}
 	
-	public List<LivroVO> listar(){
-		List<LivroVO> livros = new ArrayList<LivroVO>();
-		try {
-			ResultSet rs = buscar();
-			while(rs.next()) {
-				LivroVO vo = new LivroVO();
-				vo.setAno(rs.getInt("ano"));
-				vo.setAutor(rs.getString("autor"));
-				vo.setCodProduto(rs.getInt("codLivro"));
-				vo.setExemplares(rs.getInt("exemplares"));
-				vo.setGenero(rs.getString("genero"));
-				vo.setPaginas(rs.getInt("paginas"));
-				vo.setTitulo(rs.getString("titulo"));
-				vo.setValorAluguel(rs.getDouble("valorAluguel"));
-				livros.add(vo);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return livros;
-	}
+	
 	
 	public ResultSet pesquisarPorTitulo(LivroVO vo) {
 		String sql = "select * from Livro where titulo = ?";

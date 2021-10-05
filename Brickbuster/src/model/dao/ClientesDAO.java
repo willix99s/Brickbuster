@@ -5,8 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class ClientesDAO extends BaseDAO<ClientesVO> {
 
@@ -72,25 +71,6 @@ public class ClientesDAO extends BaseDAO<ClientesVO> {
 		return rs;
 	}
 	
-	public List<ClientesVO> listar()
-	{
-		List<ClientesVO> cliente = new ArrayList<ClientesVO>();
-		try {
-			ResultSet rs = buscar();
-			while(rs.next()) {
-				ClientesVO vo = new ClientesVO();
-				vo.setCodClientes(rs.getInt("codClientes"));
-				vo.setCpf(rs.getString("cpf"));
-				vo.setEndereco(rs.getString("endereco"));
-				vo.setNome(rs.getString("nome"));
-				cliente.add(vo);	
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return cliente;
-	}
 	
 	public ResultSet pesquisarPorNome(ClientesVO vo) {
 		String sql = "select * from Clientes where nome = ?";
