@@ -50,18 +50,16 @@ public class AluguelLivroBO implements BaseinterBO<AluguelLivroVO> {
 		}
 	}
 
-	public List<AluguelLivroVO> listar(AluguelVO vo) throws Exception {
+	public List<AluguelLivroVO> listar(AluguelVO vo) throws Exception{
 		List<AluguelLivroVO> alugueisL = null;
 		try {
 			ResultSet rs = dao.buscar();
-			if(rs.next()) {
+			if (rs.next()) {
 				alugueisL = dao.listar(vo);
+			} else {
+				throw new Exception("Impossível listar, pois não existe aluguel de livro com este id.");
 			}
-			else {
-				throw new Exception("Impossível listar, pois não existem registros de aluguéis de livros.");
-			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
 		return alugueisL;
@@ -86,8 +84,9 @@ public class AluguelLivroBO implements BaseinterBO<AluguelLivroVO> {
 	}
 
 	@Override
-	public ResultSet buscar() throws Exception {
+	public List<AluguelLivroVO> listar() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

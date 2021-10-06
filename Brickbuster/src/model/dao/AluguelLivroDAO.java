@@ -61,7 +61,6 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 		}
 	}
 
-	
 	public List<AluguelLivroVO> listar(AluguelVO voAluguel){
 		
 		String sql = "select * from aluguelLivro where codAluguel = ?";
@@ -108,13 +107,20 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 		}
 	}
 
-	
-
-
 	@Override
 	public ResultSet buscar() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from aluguelLivro";
+		Statement st;
+		ResultSet rs = null;
+
+		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Override
@@ -134,9 +140,5 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
-
 	
 }

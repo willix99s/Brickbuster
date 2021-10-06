@@ -111,6 +111,22 @@ public class AluguelDiscoDAO extends BaseDAO<AluguelDiscoVO> {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public ResultSet buscar() throws SQLException {
+		String sql = "select * from aluguelDisco";
+		Statement st;
+		ResultSet rs = null;
+
+		try {
+			st = getConnection().createStatement();
+			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
 
 	@Override
 	public void inserir(AluguelDiscoVO vo) throws SQLException {
@@ -128,12 +144,6 @@ public class AluguelDiscoDAO extends BaseDAO<AluguelDiscoVO> {
 	public void remover(AluguelDiscoVO vo) throws SQLException {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public ResultSet buscar() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

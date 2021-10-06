@@ -11,8 +11,7 @@ import model.vo.AluguelVO;
 public class AluguelDiscoBO implements BaseinterBO<AluguelDiscoVO> {
 	AluguelDiscoDAO dao = new AluguelDiscoDAO();
 
-	@Override
-	public void inserir(AluguelDiscoVO vo) throws Exception {
+	public void inserir(AluguelDiscoVO vo[]) throws Exception {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
@@ -26,8 +25,7 @@ public class AluguelDiscoBO implements BaseinterBO<AluguelDiscoVO> {
 	}
 	
 	
-	@Override
-	public void editar(AluguelDiscoVO vo) throws Exception {
+	public void editar(AluguelDiscoVO vo[]) throws Exception {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
@@ -41,8 +39,7 @@ public class AluguelDiscoBO implements BaseinterBO<AluguelDiscoVO> {
 	}
 	
 
-	@Override
-	public void remover(AluguelDiscoVO vo) throws Exception {
+	public void remover(AluguelDiscoVO vo[]) throws Exception {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
@@ -54,31 +51,43 @@ public class AluguelDiscoBO implements BaseinterBO<AluguelDiscoVO> {
 			throw new Exception(e.getMessage());
 		}
 	}
-		
 
-	public List<AluguelDiscoVO> listar(AluguelVO vo) throws Exception {
-		List<AluguelDiscoVO> alugueldisc = null;
+	public List<AluguelDiscoVO> listar(AluguelVO vo) throws Exception{
+		List<AluguelDiscoVO> alugueisD = null;
 		try {
 			ResultSet rs = dao.buscar();
-			if(rs.next()) {
-				alugueldisc = dao.listar(vo);
+			if (rs.next()) {
+				alugueisD = dao.listar(vo);
+			} else {
+				throw new Exception("Impossível listar, pois não existe aluguel de Disco com este id.");
 			}
-			else {
-				throw new Exception("Impossível listar, pois não existem registros de aluguéis de livros.");
-			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
 		}
-		return alugueldisc;
+		return alugueisD;
 	}
 
+	@Override
+	public void inserir(AluguelDiscoVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void editar(AluguelDiscoVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void remover(AluguelDiscoVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 
 	@Override
 	public List<AluguelDiscoVO> listar() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	}
-
-
+}
