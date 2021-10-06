@@ -4,8 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import model.vo.DiscoVO;
 
@@ -68,28 +67,7 @@ public class DiscoDAO extends ProdutoDAO<DiscoVO> {
 		return rs;
 	}
     
-    public List<DiscoVO> listar() {
-		List<DiscoVO> discos = new ArrayList<DiscoVO>();
-		
-		try {
-			 
-			 ResultSet rs = buscar();
-			 while(rs.next()) {
-				 DiscoVO vo = new DiscoVO();
-				 vo.setCodDisco(rs.getInt("codDisco"));
-				 vo.setTitulo(rs.getString("titulo"));
-				 vo.setBanda(rs.getString("banda"));
-				 vo.setEstilo(rs.getString("estilo"));
-				 vo.setExemplares(rs.getInt("exemplares"));
-				 vo.setValorAluguel(rs.getDouble("valorAluguel"));
-				 discos.add(vo);
-			 }
-                } catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return discos;
-}
+ 
    public ResultSet pesquisarPorTitulo(DiscoVO vo) {
 	
 		String sql = "select * from Disco where titulo = ?";
