@@ -2,62 +2,75 @@ package model.bo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import model.dao.AdminDAO;
 import model.vo.AdminVO;
 
 public class AdminBO implements BaseinterBO<AdminVO> {
 
 	AdminDAO dao = new AdminDAO();
-	public void inserir(AdminVO vo) throws Exception 
-	{
+
+	public void inserir(AdminVO vo) throws Exception {
 		try {
-			ResultSet rs = dao.buscar(vo);
+			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throws new Exception("Erro em inserir, pois esse Admin já existe.");
+				throw new Exception("Erro em inserir, pois esse Admin já existe.");
+			} else {
+				dao.buscar();
 			}
-			else {
-				dao.buscar(vo);
-			}
-			catch(SQLException e) {
-				throws new Exception(e.getMessage());			
-			}
-	    }
-		
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+		}
+
 	}
-	
-	public void editar(AdminVO vo) throws Exception 
-	{
+
+	public void editar(AdminVO vo) throws Exception {
 		try {
-			ResultSet rs = dao.buscar(vo);
+			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throws new Exception("Erro em editar, pois esse Admin não existe.");
+				throw new Exception("Erro em editar, pois esse Admin não existe.");
+			} else {
+				dao.buscar();
 			}
-			else {
-				dao.buscar(vo);
-			}
-			catch(SQLException e) {
-				throws new Exception(e.getMessage());			
-			}
-	    }
-		
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+		}
+
 	}
-	
-	public void remover(AdminVO vo) throws Exception 
-	{
+
+	public void remover(AdminVO vo) throws Exception {
 		try {
-			ResultSet rs = dao.buscar(vo);
+			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throws new Exception("Erro em remover, pois esse Admin não existe.");
+				throw new Exception("Erro em remover, pois esse Admin não existe.");
+			} else {
+				dao.buscar();
 			}
-			else {
-				dao.buscar(vo);
-			}
-			catch(SQLException e) {
-				throws new Exception(e.getMessage());			
-			}
-	    }
-		
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+		}
+
 	}
-	
-	
+
+	public List<AdminVO> listar() throws Exception {
+		List<AdminVO> admins = new ArrayList<AdminVO>();
+		try {
+			ResultSet rs = dao.buscar();
+			while (rs.next()) {
+				AdminVO vo = new AdminVO();
+				vo.setCodAdmin(rs.getInt("codAdmin"));
+				vo.setLogin(rs.getString("login"));
+				vo.setNome(rs.getString("nome"));
+				vo.setSenha(rs.getString("senha"));
+				admins.add(vo);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return admins;
+	}
+
 }

@@ -77,7 +77,6 @@ public class ProdutoDAO<VO extends ProdutoVO> extends BaseDAO<VO> {
 		try {
 			ptst = getConnection().prepareStatement(sql);
 			ptst.setString(1, vo.getTitulo());
-			System.out.println(ptst);
 			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

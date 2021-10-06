@@ -4,8 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.vo.AdminVO;
 
@@ -68,26 +66,6 @@ public class AdminDAO extends BaseDAO<AdminVO> {
 			e.printStackTrace();
 		}
 		return rs;
-	}
-	
-	public List<AdminVO> listar()
-	{
-		List<AdminVO> admins = new ArrayList<AdminVO>();
-		try {
-			ResultSet rs = buscar();
-			while(rs.next()) {
-				AdminVO vo = new AdminVO();
-				vo.setCodAdmin(rs.getInt("codAdmin"));
-				vo.setLogin(rs.getString("login"));
-				vo.setNome(rs.getString("nome"));
-				vo.setSenha(rs.getString("senha"));
-				admins.add(vo);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return admins;
 	}
 	
 	public void editar(AdminVO vo) {

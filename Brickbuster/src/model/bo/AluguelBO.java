@@ -65,7 +65,7 @@ public class AluguelBO implements BaseinterBO<AluguelVO> {
 			}
 	    }
 		
-	public List<AluguelVO> listar(){
+	public List<AluguelVO> listar() throws Exception {
 		
 		List<AluguelVO> alugueis = new ArrayList<AluguelVO>();
 		List<AluguelLivroVO> livros = new ArrayList<AluguelLivroVO>();

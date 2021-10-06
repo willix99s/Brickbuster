@@ -2,6 +2,7 @@ package model.bo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import model.dao.ProdutoDAO;
 import model.vo.ProdutoVO;
@@ -56,22 +57,12 @@ public class ProdutoBO implements BaseinterBO<ProdutoVO>{
 			throw new Exception(e.getMessage());
 		}
 	}
-	
+
 	@Override
-	public ResultSet buscar() throws Exception {
-		try {
-			ResultSet rs = dao.buscar();
-			if(rs.next()) {
-				dao.buscar();
-			}
-			else {
-				throw new Exception("Impossível listar, pois não existem produtos cadastrados.");
-			}
-		}
-		catch(SQLException e) {
-			throw new Exception(e.getMessage());
-		}
+	public List<ProdutoVO> listar() throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	
 }

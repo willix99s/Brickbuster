@@ -64,7 +64,7 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		
 	} 
 
-	public List<ClientesVO> listar()
+	public List<ClientesVO> listar() throws Exception
 	{
 		List<ClientesVO> cliente = new ArrayList<ClientesVO>();
 		try {
@@ -83,8 +83,47 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		}
 		return cliente;
 	}
+	
+	public List<ClientesVO> pesquisarPorNome(ClientesVO cli) throws Exception {
+		List<ClientesVO> cliente = new ArrayList<ClientesVO>();
+		
+		try {
+			ResultSet rs = dao.pesquisarPorNome(cli);
+			while (rs.next()) {
+				ClientesVO vo = new ClientesVO();
+				vo.setCodClientes(rs.getInt("codClientes"));
+				vo.setCpf(rs.getString("cpf"));
+				vo.setEndereco(rs.getString("endereco"));
+				vo.setNome(rs.getString("nome"));
+				cliente.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cliente;
+	}
+	
+	public List<ClientesVO> pesquisarPorCpf(ClientesVO cli) throws Exception {
+		List<ClientesVO> cliente = new ArrayList<ClientesVO>();
+		
+		try {
+			ResultSet rs = dao.pesquisarPorCpf(cli);
+			while (rs.next()) {
+				ClientesVO vo = new ClientesVO();
+				vo.setCodClientes(rs.getInt("codClientes"));
+				vo.setCpf(rs.getString("cpf"));
+				vo.setEndereco(rs.getString("endereco"));
+				vo.setNome(rs.getString("nome"));
+				cliente.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cliente;
+	} 
 
 }
-
-	
-
