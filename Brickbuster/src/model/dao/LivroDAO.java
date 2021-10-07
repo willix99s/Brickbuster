@@ -145,7 +145,7 @@ public class LivroDAO extends ProdutoDAO<LivroVO> {
 				ptst.setInt(5, vo.getPaginas());			
 				ptst.setInt(6, vo.getExemplares());
 				ptst.setDouble(7, vo.getValorAluguel());
-				ptst.setInt(8, vo.getCodProduto());
+				ptst.setInt(8, vo.getCodLivro());
 				ptst.executeUpdate();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

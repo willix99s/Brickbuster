@@ -15,10 +15,10 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
 			if (rs.next()) {
-				throw new Exception("Erro em inserir,  pois esse cpf já existe.");
+				throw new Exception("Erro em inserir, pois já existe um cliente com esse cpf.");
 			}
 			else {
-				dao.pesquisarPorCpf(vo);
+				dao.inserir(vo);
 				}
 			}
 			catch(SQLException e) {
@@ -33,10 +33,10 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
 			if (rs.next()) {
-				dao.pesquisarPorCpf(vo);
+				dao.editar(vo);
 			}
 			else {
-				throw new Exception("Erro em editar, pois esse cpf não existe.");
+				throw new Exception("Erro em editar, pois não existe um cliente com esse cpf.");
 		    }
 		}
 			catch(SQLException e) {
@@ -51,11 +51,11 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 	{
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
-			if (rs.next() == false) {
-				dao.pesquisarPorCpf(vo);
+			if (rs.next()) {
+				dao.remover(vo);
 			}
 			else {
-				throw new Exception("Erro em remover, pois esse cpf não existe.");
+				throw new Exception("Erro em remover, pois não existe um cliente com esse cpf.");
 		    }
 			}
 			catch(SQLException e) {

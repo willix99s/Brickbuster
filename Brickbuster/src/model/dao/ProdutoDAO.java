@@ -13,7 +13,7 @@ public class ProdutoDAO<VO extends ProdutoVO> extends BaseDAO<VO> {
 	
 	@Override
 	public void inserir(VO vo) throws SQLException {
-		String sql = "insert into produto (titulo, exemplares, valorAluguel) values (?,?,?,?)";
+		String sql = "insert into produto (titulo, exemplares, valorAluguel) values (?,?,?)";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);

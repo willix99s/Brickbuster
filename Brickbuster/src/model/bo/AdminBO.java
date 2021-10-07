@@ -18,7 +18,7 @@ public class AdminBO implements BaseinterBO<AdminVO> {
 			if (rs.next()) {
 				throw new Exception("Erro em inserir, pois esse Admin já existe.");
 			} else {
-				dao.buscar();
+				dao.inserir(vo);
 			}
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());

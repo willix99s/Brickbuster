@@ -23,7 +23,7 @@ public class AluguelBO implements BaseinterBO<AluguelVO> {
 				throw new Exception("Erro em inserir, pois esse aluguel já existe.");
 			}
 			else {
-				dao.buscar();
+				dao.inserir(vo);
 			}
 		}
 			catch(SQLException e) {
