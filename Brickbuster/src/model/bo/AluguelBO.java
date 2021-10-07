@@ -37,10 +37,10 @@ public class AluguelBO implements BaseinterBO<AluguelVO> {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throw new Exception("Erro em editar, pois esse aluguel não existe.");
+				dao.editar(vo);
 			}
 			else {
-				dao.buscar();
+				throw new Exception("Erro em editar, pois esse aluguel não existe.");
 			}
 		}
 			catch(SQLException e) {
@@ -54,10 +54,10 @@ public class AluguelBO implements BaseinterBO<AluguelVO> {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throw new Exception("Erro em remover, pois esse aluguel não existe.");
+				dao.remover(vo);
 			}
 			else {
-				dao.buscar();
+				throw new Exception("Erro em remover, pois esse aluguel não existe.");
 			}
 		}
 			catch(SQLException e) {

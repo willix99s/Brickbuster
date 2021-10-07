@@ -30,9 +30,9 @@ public class AdminBO implements BaseinterBO<AdminVO> {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throw new Exception("Erro em editar, pois esse Admin não existe.");
+				dao.editar(vo);
 			} else {
-				dao.buscar();
+				throw new Exception("Erro em editar, pois esse Admin não existe.");
 			}
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());
@@ -44,9 +44,9 @@ public class AdminBO implements BaseinterBO<AdminVO> {
 		try {
 			ResultSet rs = dao.buscar();
 			if (rs.next()) {
-				throw new Exception("Erro em remover, pois esse Admin não existe.");
+				dao.remover(vo);
 			} else {
-				dao.buscar();
+				throw new Exception("Erro em remover, pois esse Admin não existe.");
 			}
 		} catch (SQLException e) {
 			throw new Exception(e.getMessage());

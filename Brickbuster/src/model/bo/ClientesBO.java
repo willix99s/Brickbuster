@@ -33,10 +33,10 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
 			if (rs.next()) {
-				throw new Exception("Erro em editar, pois esse cpf não existe.");
+				dao.pesquisarPorCpf(vo);
 			}
 			else {
-				dao.pesquisarPorCpf(vo);
+				throw new Exception("Erro em editar, pois esse cpf não existe.");
 		    }
 		}
 			catch(SQLException e) {
@@ -52,10 +52,10 @@ public class ClientesBO implements BaseinterBO<ClientesVO> {
 		try {
 			ResultSet rs = dao.pesquisarPorCpf(vo);
 			if (rs.next() == false) {
-				throw new Exception("Erro em remover, pois esse cpf não existe.");
+				dao.pesquisarPorCpf(vo);
 			}
 			else {
-				dao.pesquisarPorCpf(vo);
+				throw new Exception("Erro em remover, pois esse cpf não existe.");
 		    }
 			}
 			catch(SQLException e) {
