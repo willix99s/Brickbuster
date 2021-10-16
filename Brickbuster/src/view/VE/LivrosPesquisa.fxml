@@ -23,12 +23,12 @@
          </image>
       </ImageView>
       <Region layoutX="14.0" layoutY="113.0" prefHeight="273.0" prefWidth="573.0" style="-fx-background-color: #EF0F0F; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <ImageView fitHeight="79.0" fitWidth="395.0" layoutX="127.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="395.0" layoutX="127.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ClientesLogo.png" />
+            <Image url="@LivroLogo.png" />
          </image>
       </ImageView>
-      <Button layoutX="466.0" layoutY="203.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
+      <Button layoutX="480.0" layoutY="183.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="🔎">
          <font>
             <Font size="20.0" />
          </font>
@@ -36,13 +36,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button layoutX="466.0" layoutY="276.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🗑">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <TextField layoutX="170.0" layoutY="183.0" prefHeight="34.0" prefWidth="192.0" promptText="NOME" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <TextField layoutX="171.0" layoutY="243.0" prefHeight="34.0" prefWidth="192.0" promptText="ENDEREÇO" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <TextField layoutX="172.0" layoutY="301.0" prefHeight="34.0" prefWidth="192.0" promptText="CPF" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="47.0" layoutY="183.0" prefHeight="34.0" prefWidth="395.0" promptText="Harry Potter e a Pedra Filosofal..." style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
    </children>
 </Pane>
