@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="102.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo%20Oficial.png" />
+         </image>
+      </ImageView>
+      <Region layoutX="14.0" layoutY="113.0" prefHeight="273.0" prefWidth="573.0" style="-fx-background-color: #EF0F0F; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <Button layoutX="499.0" layoutY="198.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="499.0" layoutY="263.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🗑">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <TextField layoutX="61.0" layoutY="178.0" prefHeight="34.0" prefWidth="192.0" promptText="TÍTULO" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="61.0" layoutY="228.0" prefHeight="34.0" prefWidth="192.0" promptText="ESTILO" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="61.0" layoutY="279.0" prefHeight="34.0" prefWidth="192.0" promptText="VALOR" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="268.0" layoutY="228.0" prefHeight="34.0" prefWidth="192.0" promptText="EXEMPLARES" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="269.0" layoutY="178.0" prefHeight="34.0" prefWidth="192.0" promptText="BANDA" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <ImageView fitHeight="50.0" fitWidth="400.0" layoutX="112.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@DiscoLogo.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

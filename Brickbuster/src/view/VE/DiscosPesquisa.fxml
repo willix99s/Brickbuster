@@ -6,14 +6,6 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -23,19 +15,19 @@
          </image>
       </ImageView>
       <Region layoutX="14.0" layoutY="113.0" prefHeight="273.0" prefWidth="573.0" style="-fx-background-color: #EF0F0F; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <ImageView fitHeight="88.0" fitWidth="395.0" layoutX="127.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@ClientesLogo.png" />
-         </image>
-      </ImageView>
       <Button layoutX="480.0" layoutY="183.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="🔎">
-         <font>
-            <Font size="20.0" />
-         </font>
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
       </Button>
-      <TextField layoutX="47.0" layoutY="183.0" prefHeight="34.0" prefWidth="395.0" promptText="nome..." style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField layoutX="47.0" layoutY="183.0" prefHeight="34.0" prefWidth="395.0" promptText="Thriller..." style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <ImageView fitHeight="54.0" fitWidth="395.0" layoutX="124.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@DiscoLogo.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
