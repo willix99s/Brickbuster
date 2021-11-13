@@ -14,15 +14,12 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 	public void inserir(AluguelLivroVO vo[]) {
 		
 		try {
-			String sql = "insert into aluguelLivro (codAluguelLivro, codAluguel, codLivro) values (?,?,?)";
+			String sql = "insert into aluguelLivro (codAluguel, codLivro) values (?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			for (int i = 0; i < vo.length; i++) {
-			ptst = getConnection().prepareStatement(sql);
-			ptst.setInt(1, vo[i].getCodAluguelLivro());
-			ptst.setInt(2, vo[i].getCodAluguel().getCodAluguel());
-			ptst.setInt(3, vo[i].getCodLivro().getCodLivro());
-			ptst.execute();
+			ptst.setInt(1, vo[i].getCodAluguel().getCodAluguel());
+			ptst.setInt(2, vo[i].getCodLivro().getCodLivro());
 			
 			int affectedRows = ptst.executeUpdate();
 			
@@ -90,7 +87,7 @@ public class AluguelLivroDAO extends BaseDAO<AluguelLivroVO> {
 	
 	public void editar(AluguelLivroVO vo[]) {
 		
-		String sql = "update aluguelLivro set codLivro = ? where codAluguelLivro = ?";
+		String sql = "update aluguelLivro set codAluguel = ? where codAluguelLivro = ?";
 		PreparedStatement ptst;
 		try {
 			

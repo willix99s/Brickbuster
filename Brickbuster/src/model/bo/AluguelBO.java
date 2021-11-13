@@ -75,15 +75,14 @@ public class AluguelBO implements BaseinterBO<AluguelVO> {
 			ResultSet rs = dao.buscar();
 			while(rs.next()) {
 				Calendar calendar = Calendar.getInstance();
-				Calendar calendar2 = Calendar.getInstance();
 						
 				AluguelVO vo = new AluguelVO();
 				vo.setCodAluguel(rs.getInt("codAluguel"));
 				vo.getCodNomeCliente().setCodClientes(rs.getInt("codNomeCliente"));
 				calendar.setTime(rs.getDate("dataInicio"));
-				vo.setDataInicio(calendar);
+				vo.setDataInicio();
 				calendar.setTime(rs.getDate("dataFinal"));
-				vo.setDataFinal(calendar2);
+				vo.setDataFinal();
 				vo.setValorAluguel(rs.getDouble("valorAluguel"));
 				alugueis.add(vo);
 				

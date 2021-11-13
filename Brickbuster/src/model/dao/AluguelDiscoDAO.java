@@ -11,21 +11,17 @@ import model.vo.AluguelVO;
 
 public class AluguelDiscoDAO extends BaseDAO<AluguelDiscoVO> {
 
-	
 	public void inserir(AluguelDiscoVO vo[]) {
 		
 		try {
-			String sql = "insert into aluguelDisco (codAluguelDisco, codAluguel, codDisco) values (?,?,?)";
+			String sql = "insert into aluguelDisco (codAluguel, codDisco) values (?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			
-			
 			for (int i = 0; i < vo.length; i++) {
+			ptst.setInt(1, vo[i].getCodAluguel().getCodAluguel());
+			ptst.setInt(2, vo[i].getCodDisco().getCodDisco());
 			
-			ptst.setInt(1, vo[i].getCodAluguelDisco());
-			ptst.setInt(2, vo[i].getCodAluguel().getCodAluguel());
-			ptst.setInt(3, vo[i].getCodDisco().getCodDisco());
-			ptst.execute();
+			System.out.println(vo.length);
 			
 			  int affectedRows = ptst.executeUpdate();
 				

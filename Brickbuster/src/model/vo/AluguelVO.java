@@ -33,12 +33,10 @@ public class AluguelVO {
 		return dataInicio;
 	}
 	
-	public void setDataInicio(Calendar dataInicio) {
+	public void setDataInicio() {
 		
 		Calendar dataI = Calendar.getInstance();
-		
-		if ( dataInicio.equals(dataI) ) { System.out.println ("Data atual correta!"); }
-		else { this.dataInicio = dataInicio; } 
+		this.dataInicio = dataI;
 		
 	}
 	
@@ -46,12 +44,11 @@ public class AluguelVO {
 	public Calendar getDataFinal() {
 		return dataFinal;
 	}
-	public void setDataFinal(Calendar dataFinal) {
+	public void setDataFinal() {
 		
-		Calendar dataI = Calendar.getInstance();
-		dataI.add(Calendar.DAY_OF_MONTH, 3); 
-		
-		if ( dataFinal.equals(dataI) ) { this.dataFinal = dataFinal; }
+		Calendar dataF = Calendar.getInstance();
+		dataF.add(Calendar.DAY_OF_MONTH, 3);
+		this.dataFinal = dataF;
 	
 	}
 	

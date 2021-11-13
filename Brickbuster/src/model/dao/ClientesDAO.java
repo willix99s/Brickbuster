@@ -12,13 +12,12 @@ public class ClientesDAO extends BaseDAO<ClientesVO> {
 	public void inserir(ClientesVO vo) 
 	{
 		try {
-			String sql = "insert into clientes (codClientes, nome, endereco, cpf) values (?,?,?,?)";
+			String sql = "insert into clientes (nome, endereco, cpf) values (?,?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ptst.setInt(1, vo.getCodClientes());
-			ptst.setString(2, vo.getNome());
-			ptst.setString(3, vo.getEndereco());
-			ptst.setString(4, vo.getCpf());
+			ptst.setString(1, vo.getNome());
+			ptst.setString(2, vo.getEndereco());
+			ptst.setString(3, vo.getCpf());
 			
 			int affectedRows = ptst.executeUpdate();
 			

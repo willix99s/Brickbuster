@@ -72,5 +72,36 @@ public class AdminBO implements BaseinterBO<AdminVO> {
 		}
 		return admins;
 	}
+	
+	public AdminVO autenticar(AdminVO vo) throws Exception {
+		ResultSet rs = dao.buscarPorLogin(vo);
+		try {
+			while (rs.next()) {
+				System.out.println(rs.getString("login"));
+				if(rs.getString("login").equals(vo.getLogin())) {
+					
+					if(rs.getString("senha").equals(vo.getSenha())) {	
+						
+						AdminVO adm = new AdminVO();
+						adm.setCodAdmin(rs.getInt("codAdmin"));
+						
+							adm.setCodAdmin(vo.getCodAdmin());
+							adm.setLogin(vo.getLogin());
+							adm.setNome(vo.getNome());
+							adm.setSenha(vo.getSenha());
+							
+							System.out.println("Logado com sucesso.");
+							
+							return adm;
+					} else {
+						throw new Exception("Erro em autenticar, pois esse Admin não existe.");
+					}
+				}
+			}
+		} catch (SQLException e) {
+			throw new Exception(e.getMessage());
+		}
+		return vo;
+	}
 
 }

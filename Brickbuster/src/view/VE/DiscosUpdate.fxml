@@ -15,7 +15,7 @@
          </image>
       </ImageView>
       <Region layoutX="14.0" layoutY="113.0" prefHeight="273.0" prefWidth="573.0" style="-fx-background-color: #EF0F0F; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <Button layoutX="499.0" layoutY="198.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
+      <Button layoutX="499.0" layoutY="198.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="âœ”">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -23,7 +23,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="499.0" layoutY="263.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🗑">
+      <Button layoutX="499.0" layoutY="263.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="ðŸ—‘">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

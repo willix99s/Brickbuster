@@ -11,13 +11,12 @@ public class AdminDAO extends BaseDAO<AdminVO> {
 	
 	public void inserir(AdminVO vo) {	
 		try {
-			String sql = "insert into admin (codAdmin, login, senha, nome) values (?,?,?,?)";
+			String sql = "insert into admin (login, senha, nome) values (?,?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ptst.setInt(1, vo.getCodAdmin());
-			ptst.setString(2, vo.getLogin());
-			ptst.setString(3, vo.getSenha());
-			ptst.setString(4, vo.getNome());
+			ptst.setString(1, vo.getLogin());
+			ptst.setString(2, vo.getSenha());
+			ptst.setString(3, vo.getNome());
 			
 			int affectedRows = ptst.executeUpdate();
 			
@@ -61,6 +60,23 @@ public class AdminDAO extends BaseDAO<AdminVO> {
 		try {
 			st = getConnection().createStatement();
 			rs = st.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
+	public ResultSet buscarPorLogin(AdminVO vo) 
+	{
+		String sql = "select * from admin where login = ?";
+		PreparedStatement ptst;
+		ResultSet rs = null;
+
+		try {
+			ptst = getConnection().prepareStatement(sql);
+			ptst.setString(1, vo.getLogin());
+			rs = ptst.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

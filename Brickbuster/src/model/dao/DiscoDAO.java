@@ -14,7 +14,7 @@ public class DiscoDAO extends ProdutoDAO<DiscoVO> {
     public void inserir(DiscoVO vo) {
 		try {
 			super.inserir(vo);
-			String sql = "insert into livro (banda, estilo, codProduto) values (?,?,?)";
+			String sql = "insert into disco (banda, estilo, codProduto) values (?,?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ptst.setString(1, vo.getBanda());

@@ -24,7 +24,7 @@
             <TableColumn prefWidth="74.0" text="VALOR" />
          </columns>
       </TableView>
-      <Button layoutX="192.0" layoutY="330.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
+      <Button layoutX="192.0" layoutY="330.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="âœ”">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -32,7 +32,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="337.0" layoutY="330.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🔎">
+      <Button layoutX="337.0" layoutY="330.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="ðŸ”Ž">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

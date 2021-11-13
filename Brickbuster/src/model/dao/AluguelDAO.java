@@ -11,14 +11,13 @@ public class AluguelDAO extends BaseDAO<AluguelVO> {
 	public void inserir(AluguelVO vo) {
 
 		try {
-			String sql = "insert into aluguel (codAluguel, codNomeCliente, dataInicio, dataFinal, valorAluguel) values (?,?,?,?,?)";
+			String sql = "insert into aluguel (codNomeCliente, dataInicio, dataFinal, valorAluguel) values (?,?,?,?)";
 			PreparedStatement ptst;
 			ptst = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-			ptst.setInt(1, vo.getCodAluguel());
-			ptst.setInt(2, vo.getCodNomeCliente().getCodClientes());
-			ptst.setDate(3, new java.sql.Date(vo.getDataInicio().getTime().getTime()));
-			ptst.setDate(4, new java.sql.Date(vo.getDataFinal().getTime().getTime()));
-			ptst.setDouble(5, vo.getValorAluguel());
+			ptst.setInt(1, vo.getCodNomeCliente().getCodClientes());
+			ptst.setDate(2, new java.sql.Date(vo.getDataInicio().getTime().getTime()));
+			ptst.setDate(3, new java.sql.Date(vo.getDataFinal().getTime().getTime()));
+			ptst.setDouble(4, vo.getValorAluguel());
 			int affectedRows = ptst.executeUpdate();
 			
 			if(affectedRows == 0) {
@@ -33,12 +32,14 @@ public class AluguelDAO extends BaseDAO<AluguelVO> {
 			}
 			
 			AluguelDiscoDAO dao = new AluguelDiscoDAO();
+			System.out.println(vo.getLivro()[0].getCodAluguel().getCodAluguel());
+			System.out.println(vo.getLivro()[0].getCodAluguelLivro());
+			System.out.println(vo.getLivro()[0].getCodLivro());
+			System.out.println(vo.getLivro().length);
 			dao.inserir(vo.getDisco());
 			
 			AluguelLivroDAO dao2 = new AluguelLivroDAO();
 			dao2.inserir(vo.getLivro());
-			
-			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -87,7 +88,7 @@ public class AluguelDAO extends BaseDAO<AluguelVO> {
 	
 	
 	public void editar(AluguelVO vo) {
-		String sql = "update aluguel set  codNomeCliente = ? where codAluguel = ?";
+		String sql = "update aluguel set codNomeCliente = ? where codAluguel = ?";
 		PreparedStatement ptst;
 		try {
 			ptst = getConnection().prepareStatement(sql);
