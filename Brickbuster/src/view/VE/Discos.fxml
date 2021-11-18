@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontController">
    <children>
       <ImageView fitHeight="102.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,7 +24,7 @@
             <TableColumn prefWidth="74.0" text="VALOR" />
          </columns>
       </TableView>
-      <Button layoutX="192.0" layoutY="330.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="âœ”">
+      <Button layoutX="192.0" layoutY="330.0" mnemonicParsing="false" onAction="#abrirTelaDiscosUpdate" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="+">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -32,7 +32,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="337.0" layoutY="330.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="ðŸ”Ž">
+      <Button layoutX="337.0" layoutY="330.0" mnemonicParsing="false" onAction="#abrirTelaDiscosPesquisa" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🔎">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -42,5 +42,13 @@
             <Image url="@DiscoLogo.png" />
          </image>
       </ImageView>
+      <Button layoutX="48.0" layoutY="124.0" mnemonicParsing="false" onAction="#retornarMenuInicial" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="⬅">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

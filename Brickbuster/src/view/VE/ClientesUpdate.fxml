@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontController">
    <children>
       <ImageView fitHeight="102.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,7 +28,7 @@
             <Image url="@ClientesLogo.png" />
          </image>
       </ImageView>
-      <Button layoutX="466.0" layoutY="203.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
+      <Button layoutX="466.0" layoutY="203.0" mnemonicParsing="false" onAction="#inserirCliente" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="✔">
          <font>
             <Font size="20.0" />
          </font>
@@ -36,13 +36,21 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button layoutX="466.0" layoutY="276.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🗑">
+      <Button layoutX="466.0" layoutY="276.0" mnemonicParsing="false" onAction="#pesquisarCliente" prefHeight="46.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" text="🗑">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <TextField layoutX="170.0" layoutY="183.0" prefHeight="34.0" prefWidth="192.0" promptText="NOME" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <TextField layoutX="171.0" layoutY="243.0" prefHeight="34.0" prefWidth="192.0" promptText="ENDEREÇO" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
-      <TextField layoutX="172.0" layoutY="301.0" prefHeight="34.0" prefWidth="192.0" promptText="CPF" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField fx:id="nomeCliente" layoutX="170.0" layoutY="183.0" prefHeight="34.0" prefWidth="192.0" promptText="NOME" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField fx:id="enderecoCliente" layoutX="171.0" layoutY="243.0" prefHeight="34.0" prefWidth="192.0" promptText="ENDEREÇO" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <TextField fx:id="cpfCliente" layoutX="172.0" layoutY="301.0" prefHeight="34.0" prefWidth="192.0" promptText="CPF" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 3;" />
+      <Button layoutX="40.0" layoutY="119.0" mnemonicParsing="false" onAction="#abrirTelaClientes" prefHeight="40.0" prefWidth="56.0" style="-fx-background-color: #FFFFFF; -fx-border-width: 3; -fx-border-color: #000000;" text="⬅">
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
